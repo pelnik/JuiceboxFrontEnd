@@ -8,6 +8,8 @@ import Posts from "./Posts";
 function Main() {
   const [token, setToken] = useState("");
 
+  
+
   useEffect(() => {
     const localToken = getToken();
 

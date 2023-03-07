@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { getPosts } from '../api-adapter';
+import { getPosts} from '../api-adapter';
 import { IndividualPost } from './';
 
 const Posts = (props) => {
@@ -12,7 +12,6 @@ const Posts = (props) => {
     if (allPosts !== undefined) {
       setPosts(allPosts);
     }
-    
   }
 
   useEffect(() => {

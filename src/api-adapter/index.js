@@ -62,3 +62,33 @@ export async function getPosts(token) {
     console.error(error);
   }
 }
+
+export async function register(username, password, name, location) {
+  console.log("register");
+
+  try {
+    const response = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        name,
+        location,
+      }),
+    });
+    const fullResponse = await response.json();
+    const token = fullResponse.token;
+    console.log("api token return register", token);
+
+    if (token !== undefined) {
+      saveToLocalStorage(token);
+    }
+
+    return token;
+  } catch (error) {
+    console.error(error);
+  }
+}
