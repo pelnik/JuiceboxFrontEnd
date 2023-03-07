@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function IndividualPost(props) {
   const post = props.post;
@@ -6,8 +6,10 @@ function IndividualPost(props) {
   return (
     <div className="individualPost">
       <h1>{post.title}</h1>
-      <p>{post.content}</p>
-      <p>{post.author.name}</p>
+      <p className="content">{post.content}</p>
+      <p className="author">
+        <strong>{post.author.name}</strong>
+      </p>
     </div>
   );
 }
