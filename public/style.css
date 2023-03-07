@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.mainContent {
+  flex-grow: 1;
+  background-color: aqua;
+}
