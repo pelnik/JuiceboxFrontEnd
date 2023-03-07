@@ -16,10 +16,10 @@
   "bugs": {
     "url": "https://github.com/cebacaro/juicebox/issues"
   },
-  "homepage": "https://github.com/cebacaro/juicebox#readme",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.2",
     "react-scripts": "^5.0.1"
   },
   "browserslist": {
