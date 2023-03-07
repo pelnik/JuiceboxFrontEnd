@@ -1,11 +1,12 @@
 import { saveToLocalStorage } from "../utils/localStorage";
 
-const BASE_URL = "https://juicebox-mld2.onrender.com/api";
+// const BASE_URL = "https://juicebox-mld2.onrender.com/api";
+const BASE_URL = "https://pelnik.dev/api/juicebox";
 
 export async function login(username, password) {
-  console.log("login");
-
   try {
+    let token = null;
+
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {
@@ -17,10 +18,10 @@ export async function login(username, password) {
       }),
     });
     const fullResponse = await response.json();
-    const token = fullResponse.token;
-    console.log("api token return", token);
+    console.log('login response', fullResponse)
 
-    if (token !== undefined) {
+    if ('token' in fullResponse ) {
+      token = fullResponse.token;
       saveToLocalStorage(token);
     }
 
@@ -31,9 +32,6 @@ export async function login(username, password) {
 }
 
 export async function getPosts(token) {
-
-  console.log('post token', token)
-
   const headerObject = {
     "Content-Type": "application/json",
   }
@@ -42,20 +40,16 @@ export async function getPosts(token) {
     headerObject.Authorization = `Bearer ${token}`;
   }
 
-  console.log('post auth', headerObject)
-
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "GET",
       headers: headerObject,
     });
 
-    
     const fullResponse = await response.json();
-    console.log('response', fullResponse);
+    console.log('getPosts response', fullResponse);
 
     const posts = fullResponse.posts;
-    console.log("Posts!!!!!!!", posts);
 
     return posts;
   } catch (error) {

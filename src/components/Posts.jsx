@@ -9,15 +9,18 @@ const Posts = (props) => {
 
   async function fetchPosts(token) {
     const allPosts = await getPosts(token);
-    if (allPosts !== undefined) {
+
+
+    if (allPosts !== undefined
+      && ((token === '' && posts.length === 0) || token !== '')
+    ) {
       setPosts(allPosts);
     }
   }
 
   useEffect(() => {
     fetchPosts(token);
-  }
-  , [token])
+  }, [token])
 
   return (
     <div className="postPage" id="postPage">

@@ -12,8 +12,9 @@ function Main() {
 
   useEffect(() => {
     const localToken = getToken();
+    console.log('localToken', localToken);
 
-    if (localToken !== undefined) {
+    if (localToken !== null) {
       setToken(localToken);
     }
   }, []);

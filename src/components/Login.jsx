@@ -22,16 +22,15 @@ function Login(props) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const token = await login(username, password);
-    console.log('login submit token', token);
+    const newToken = await login(username, password);
+    console.log('login submit token', newToken);
 
-    if (token !== undefined) {
-      setToken(token);
-    }
     setUsername('');
     setPassword('');
-
-    navigate('/');
+    
+    if (newToken !== undefined) {
+      setToken(token);
+    }
   }
 
   useEffect(() => {
