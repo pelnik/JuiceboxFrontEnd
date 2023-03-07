@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api-adapter';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function Login(props) {
   const setToken = props.setToken;
@@ -42,28 +44,28 @@ function Login(props) {
     <div className="formContainer" id="login">
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          username:
-          <input
+          <TextField
             type="text"
-            placeholder="username"
             value={username}
             name="username"
             onChange={usernameOnChange}
+            variant="outlined"
+            label="Username"
           />
         </label>
         <label>
-          password:
-          <input
+          <TextField
             type="text"
-            placeholder="password"
             value={password}
             name="password"
+            variant="outlined"
+            label="Password"
             onChange={passwordOnChange}
           />
         </label>
-        <button className="LoginBut" type="submit">
+        <Button variant="outlined" className="LoginButton" type="submit">
           Login
-        </button>
+        </Button>
       </form>
     </div>
   );
