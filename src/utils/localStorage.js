@@ -3,5 +3,10 @@ export function saveToLocalStorage(token) {
 }
 
 export function getToken() {
-  return localStorage.getItem('token');
+  let fetchedToken = localStorage.getItem('token');
+  if (fetchedToken === null) {
+    fetchedToken = '';
+  }
+
+  return fetchedToken;
 }

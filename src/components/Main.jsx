@@ -8,20 +8,14 @@ import Posts from "./Posts";
 function Main() {
   const [token, setToken] = useState("");
 
-  
-
   useEffect(() => {
     const localToken = getToken();
-    console.log('localToken', localToken);
-
-    if (localToken !== null) {
-      setToken(localToken);
-    }
+    setToken(localToken);
   }, []);
 
   return (
     <div className="mainContainer" id="mainContainer">
-      <Navbar />
+      <Navbar  setToken={setToken} token={token} />
       <Routes>
         <Route
           path="/login"

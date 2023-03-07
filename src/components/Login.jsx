@@ -28,16 +28,17 @@ function Login(props) {
     setUsername('');
     setPassword('');
     
-    if (newToken !== undefined) {
-      setToken(token);
+    if (newToken !== null) {
+      setToken(newToken);
     }
   }
 
   useEffect(() => {
     if (token !== '') {
-      navigate('/');
+        navigate('/');
     };
-  }, []);
+  }, [token])
+
 
   return (
     <div className="formContainer" id="login">

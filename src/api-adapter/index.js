@@ -40,6 +40,8 @@ export async function getPosts(token) {
     headerObject.Authorization = `Bearer ${token}`;
   }
 
+  console.log('getPosts token', token, 'headerObject', headerObject)
+
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "GET",
