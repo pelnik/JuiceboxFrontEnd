@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api-adapter';
 
@@ -18,10 +18,6 @@ function Login(props) {
     setPassword(evt.target.value);
   }
 
-  if (token !== '') {
-    navigate('/posts');
-  }
-
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const token = await login(username, password);
@@ -33,8 +29,14 @@ function Login(props) {
     setUsername('');
     setPassword('');
 
-    navigate('/posts');
+    navigate('/');
   }
+
+  useEffect(() => {
+    if (token !== '') {
+      navigate('/');
+    };
+  }, []);
 
   return (
     <div className="formContainer" id="login">

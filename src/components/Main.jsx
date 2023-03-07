@@ -24,7 +24,7 @@ function Main() {
           path="/login"
           element={<Login setToken={setToken} token={token} />}
         />
-        <Route path="*" element={<Posts />} />
+        <Route path="*" element={<Posts token={token} />} />
       </Routes>
     </div>
   );

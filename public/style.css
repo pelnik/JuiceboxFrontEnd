@@ -40,3 +40,19 @@
     flex-grow: 1;
     background-color: aqua;
 }
+
+.postPage {
+    display: flex;
+    justify-content: center;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.individualPost {
+    border: solid 1px black;
+    max-width: 400px;
+}

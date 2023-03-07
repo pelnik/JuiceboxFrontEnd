@@ -31,18 +31,28 @@ export async function login(username, password) {
 }
 
 export async function getPosts(token) {
-  console.log("login");
+
+  console.log('post token', token)
+
+  const headerObject = {
+    "Content-Type": "application/json",
+  }
+
+  if (token !== '') {
+    headerObject.Authorization = `Bearer ${token}`;
+  }
+
+  console.log('post auth', headerObject)
 
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
+      headers: headerObject,
     });
 
+    
     const fullResponse = await response.json();
+    console.log('response', fullResponse);
 
     const posts = fullResponse.posts;
     console.log("Posts!!!!!!!", posts);
