@@ -57,27 +57,27 @@ export async function getPosts(token) {
   }
 }
 
-export async function register(username, password, name, location) {
-  console.log("register");
-
+export async function register(user) {
   try {
+    let token = null;
+
     const response = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password,
-        name,
-        location,
+        username: user.username,
+        password: user.password,
+        name: user.name,
+        location: user.location,
       }),
     });
     const fullResponse = await response.json();
-    const token = fullResponse.token;
-    console.log("api token return register", token);
+    console.log("register response", fullResponse);
 
-    if (token !== undefined) {
+    if ("token" in fullResponse) {
+      token = fullResponse.token;
       saveToLocalStorage(token);
     }
 

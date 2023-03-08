@@ -17,6 +17,10 @@ function Navbar(props) {
     navigate('/login');
   }
 
+  function onClickRegister() {
+    navigate('/register');
+  }
+
   function onClickHome() {
     navigate('/');
   }
@@ -35,7 +39,7 @@ function Navbar(props) {
             : null
           }
           {!token
-            ? <li>Register</li>
+            ? <li onClick={onClickRegister}>Register</li>
             : null
           }
           {token

@@ -37,6 +37,7 @@
     flex-direction: row;
     list-style: none;
     padding: 10px;
+    gap: 10px;
 }
 
 .form {
