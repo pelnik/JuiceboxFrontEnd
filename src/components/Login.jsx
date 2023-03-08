@@ -24,14 +24,11 @@ function Login(props) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    // "Lock in" username
-    const username = username;
 
     const newToken = await login(username, password, setLoginUsername);
 
     if (newToken !== null) {
       setToken(newToken);
-      setLoginUsername(username);
 
       setUsername('');
       setPassword('');
