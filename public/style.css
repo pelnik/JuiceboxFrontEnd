@@ -96,6 +96,11 @@
     padding: 10px;
 }
 
+/* 
+.delete {
+    height: 5px;
+} */
+
 .individualPost h1 {
     font-size: medium;
     margin: 10px;

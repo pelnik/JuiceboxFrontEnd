@@ -1,8 +1,8 @@
 import React from "react";
-import DeleteIcon from '@mui/icons-material/Delete';
-import Button from '@mui/joy/Button';
-import IconButton from '@mui/joy/IconButton';
-import Tooltip from '@mui/joy/Tooltip';
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/joy/Button";
+import IconButton from "@mui/joy/IconButton";
+import Tooltip from "@mui/joy/Tooltip";
 
 function IndividualPost(props) {
   const post = props.post;
@@ -16,12 +16,14 @@ function IndividualPost(props) {
           <strong>{post.author.name}</strong>
         </p>
       </div>
-      <div className='postButtonContainer'>
-        <Tooltip  describeChild title="Does not add if it already exists.">
-          <Button className="edit-button">Edit</Button>
+      <div className="postButtonContainer">
+        <Tooltip title="Does not add if it already exists.">
+          <Button describeChild className="edit-button">
+            Edit
+          </Button>
         </Tooltip>
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton size="small">
             <DeleteIcon />
           </IconButton>
         </Tooltip>
