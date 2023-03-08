@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import TextField from '@mui/material/TextField';
 
@@ -6,6 +7,10 @@ import { newPost } from '../api-adapter';
 
 function PostForm(props) {
   const token = props.token;
+  const posts = props.posts;
+  const setPosts = props.setPosts;
+
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -18,13 +23,26 @@ function PostForm(props) {
     setContent(evt.target.value);
   };
 
+  function onClickLogIn(evt) {
+    navigate('/login');
+  }
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const createdPost = await newPost(token, title, content);
     console.log("newPost submit", createdPost);
 
-    setTitle("");
-    setContent("");
+    if ('id' in createdPost) {
+      const updatedPosts = [...posts];
+      updatedPosts.push(createdPost);
+      setPosts(updatedPosts);
+
+      navigate('/');
+
+      setTitle("");
+      setContent("");
+    }
+
   };
 
   return (
@@ -52,9 +70,14 @@ function PostForm(props) {
             // defaultValue="Default Value"
           />
         </label>
-        <Button variant="outlined" className="post-button" type="submit">
-          Post
-        </Button>
+        {token
+          ? <Button variant="outlined" className="post-button" type="submit">
+            Post
+          </Button>
+          : <Button onClick={onClickLogIn} variant="outlined" className="post-button">
+            Please Log In
+          </Button>
+        }
       </form>
     </div>
   );

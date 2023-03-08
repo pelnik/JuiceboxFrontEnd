@@ -103,7 +103,7 @@ export async function newPost(userToken, title, content, tags = '') {
     const fullResponse = await response.json();
     console.log("newPost response", fullResponse);
 
-    return fullResponse;
+    return fullResponse.post;
   } catch (error) {
     console.error(error);
   }
@@ -143,7 +143,7 @@ export async function deletePost(userToken, postId) {
     const fullResponse = await response.json();
     console.log("deletePost response", fullResponse);
 
-    return fullResponse;
+    return fullResponse.post;
   } catch (error) {
     console.error(error);
   }

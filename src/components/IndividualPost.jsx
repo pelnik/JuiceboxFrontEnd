@@ -8,10 +8,23 @@ import { deletePost } from "../api-adapter";
 
 function IndividualPost(props) {
   const post = props.post;
+  const posts = props.posts;
+  const setPosts = props.setPosts;
   const token = props.token;
 
   async function deleteOnClick(evt) {
     const deletedPost = await deletePost(token, post.id);
+
+    if ('id' in deletedPost) {
+      let postsCopy = [...posts];
+      postsCopy = postsCopy.filter((post) => {
+        return post.id !== deletedPost.id;
+      });
+
+      setPosts(postsCopy);
+    }
+
+
   }
 
   return (

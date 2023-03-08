@@ -7,6 +7,7 @@ import Posts from "./Posts";
 
 function Main() {
   const [token, setToken] = useState("");
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const localToken = getToken();
@@ -27,9 +28,9 @@ function Main() {
         />
         <Route
           path="/post"
-          element={<PostForm token={token} />}
+          element={<PostForm token={token} posts={posts} setPosts={setPosts} />}
         />
-        <Route path="*" element={<Posts token={token} />} />
+        <Route path="*" element={<Posts posts={posts} setPosts={setPosts} token={token} />} />
       </Routes>
     </div>
   );

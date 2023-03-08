@@ -6,9 +6,11 @@ import { IndividualPost } from './';
 
 const Posts = (props) => {
   const token = props.token;
-  const navigate = useNavigate();
+  const posts = props.posts;
+  const setPosts = props.setPosts;
 
-  const [posts, setPosts] = useState([]);
+
+  const navigate = useNavigate();
 
   async function fetchPosts(token) {
     const allPosts = await getPosts(token);
@@ -43,7 +45,7 @@ const Posts = (props) => {
             .reverse()
             .map((post, idx) => {
             return (
-              <IndividualPost post={post} token={token} key={`IndividualPost${idx}`} />
+              <IndividualPost post={post} posts={posts} setPosts={setPosts} token={token} key={`IndividualPost${idx}`} />
             )
           })}
         </div>
