@@ -1,9 +1,12 @@
 import React, { useState, useEffect} from "react";
-import { getPosts} from '../api-adapter';
+import { useNavigate } from 'react-router-dom';
+import Chip from '@mui/joy/Chip';
+import { getPosts, newPost } from '../api-adapter';
 import { IndividualPost } from './';
 
 const Posts = (props) => {
   const token = props.token;
+  const navigate = useNavigate();
 
   const [posts, setPosts] = useState([]);
 
@@ -18,6 +21,10 @@ const Posts = (props) => {
     }
   }
 
+  function newPostOnClick(evt) {
+    navigate('/post');
+  }
+
   useEffect(() => {
     fetchPosts(token);
   }, [token])
@@ -25,6 +32,9 @@ const Posts = (props) => {
   return (
     <div className="postPage" id="postPage">
       <div className="post-list" id="post-list">
+        <Chip onClick={newPostOnClick} slotProps={{ action: { href: '' } }}>
+          New Post
+        </Chip>
         {[...posts].reverse().map((post, idx) => {
           return (
             <IndividualPost post={post} key={`IndividualPost${idx}`} />

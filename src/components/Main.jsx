@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Navbar, Register } from ".";
+import { Navbar, Register, PostForm } from ".";
 import Login from "./Login";
 import { getToken } from "../utils/localStorage.js";
 import Posts from "./Posts";
@@ -24,6 +24,10 @@ function Main() {
         <Route
           path="/register"
           element={<Register setToken={setToken} token={token} />}
+        />
+        <Route
+          path="/post"
+          element={<PostForm />}
         />
         <Route path="*" element={<Posts token={token} />} />
       </Routes>
