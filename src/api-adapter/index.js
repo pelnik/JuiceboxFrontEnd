@@ -87,7 +87,7 @@ export async function register(user) {
   }
 }
 
-export async function newPost(userToken, title, content, tags) {
+export async function newPost(userToken, title, content, tags = '') {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",

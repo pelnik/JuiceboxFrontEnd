@@ -31,15 +31,22 @@ const Posts = (props) => {
 
   return (
     <div className="postPage" id="postPage">
-      <div className="post-list" id="post-list">
+      <div className="post-list-parent">
         <Chip onClick={newPostOnClick} slotProps={{ action: { href: '' } }}>
           New Post
         </Chip>
-        {[...posts].reverse().map((post, idx) => {
-          return (
-            <IndividualPost post={post} token={token} key={`IndividualPost${idx}`} />
-          )
-        })}
+        <div className="post-list" id="post-list">
+          {[...posts]
+            .filter((post) => {
+              return post.active;
+            })
+            .reverse()
+            .map((post, idx) => {
+            return (
+              <IndividualPost post={post} token={token} key={`IndividualPost${idx}`} />
+            )
+          })}
+        </div>
       </div>
     </div>
   );

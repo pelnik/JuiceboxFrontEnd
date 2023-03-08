@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import Button from "@mui/material/Button";
 import TextField from '@mui/material/TextField';
 
-function PostForm() {
+import { newPost } from '../api-adapter';
+
+function PostForm(props) {
+  const token = props.token;
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -16,20 +20,16 @@ function PostForm() {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const newToken = await login(username, password);
-    console.log("login submit token", newToken);
+    const createdPost = await newPost(token, title, content);
+    console.log("newPost submit", createdPost);
 
-    setUsername("");
-    setPassword("");
-
-    if (newToken !== null) {
-      setToken(newToken);
-    }
+    setTitle("");
+    setContent("");
   };
 
   return (
     <div className="formContainer" id="post">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <label>
           <TextField
             type="text"
@@ -45,6 +45,7 @@ function PostForm() {
             id="outlined-multiline-static"
             label="Content"
             placeholder='Type here'
+            value={content}
             onChange={contentOnChange}
             multiline
             rows={4}

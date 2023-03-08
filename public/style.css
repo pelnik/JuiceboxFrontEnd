@@ -74,6 +74,14 @@
 .postPage {
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.post-list-parent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .post-list {

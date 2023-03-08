@@ -27,7 +27,7 @@ function Main() {
         />
         <Route
           path="/post"
-          element={<PostForm />}
+          element={<PostForm token={token} />}
         />
         <Route path="*" element={<Posts token={token} />} />
       </Routes>
