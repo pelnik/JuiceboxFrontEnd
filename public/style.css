@@ -84,17 +84,24 @@
 
 .individualPost {
     display: flex;
-    text-align: center;
     flex-direction: column;
+    justify-content: space-between;
     border: solid 1px black;
     max-width: 400px;
     height: 150px;
     margin: 5px;
+    padding: 10px;
 }
 
 .individualPost h1 {
     font-size: medium;
     margin: 10px;
+}
+
+.post-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 }
 
 .author {
@@ -108,5 +115,9 @@
     font-size: small;
 }
 
-.LoginButton {
+.postButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }

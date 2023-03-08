@@ -4,6 +4,8 @@ import { saveToLocalStorage } from "../utils/localStorage";
 
 function Navbar(props) {
   const setToken = props.setToken;
+  const token = props.token;
+
   const navigate = useNavigate();
 
   function onClickLogOut() {
@@ -28,9 +30,19 @@ function Navbar(props) {
       </div>
       <div className="subheader" id="rightHeader">
         <ul className="navBarLinks">
-          <li onClick={onClickLogIn}>Login</li>
-          <li>Register</li>
-          <li onClick={onClickLogOut}>Log Out</li>
+          {!token
+            ? <li onClick={onClickLogIn}>Login</li>
+            : null
+          }
+          {!token
+            ? <li>Register</li>
+            : null
+          }
+          {token
+            ? <li onClick={onClickLogOut}>Log Out</li>
+            : null
+          }
+          
         </ul>
       </div>
     </div>
