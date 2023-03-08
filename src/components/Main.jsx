@@ -13,10 +13,7 @@ function Main() {
   async function fetchPosts(token) {
     const allPosts = await getPosts(token);
 
-    if (
-      allPosts !== undefined &&
-      ((token === '' && posts.length === 0) || token !== '')
-    ) {
+    if (allPosts !== undefined) {
       setPosts(allPosts);
     }
   }
