@@ -93,7 +93,7 @@ export async function newPost(userToken, title, content, tags) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${userToken}`,
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
         title,
@@ -115,7 +115,7 @@ export async function patchPost(userToken, postId, title, content, tags) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${userToken}`,
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
         title,
@@ -124,6 +124,24 @@ export async function patchPost(userToken, postId, title, content, tags) {
     });
     const fullResponse = await response.json();
     console.log("pathPost response", fullResponse);
+
+    return fullResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function deletePost(userToken, postId) {
+  try {
+    const response = await fetch(`${BASE_URL}/post/${postId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+    const fullResponse = await response.json();
+    console.log("deletePost response", fullResponse);
 
     return fullResponse;
   } catch (error) {
