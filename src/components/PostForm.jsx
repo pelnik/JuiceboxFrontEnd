@@ -30,7 +30,6 @@ function PostForm(props) {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const createdPost = await newPost(token, title, content);
-    console.log('newPost submit', createdPost);
 
     if (createdPost) {
       const updatedPosts = [...posts];

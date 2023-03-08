@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { register } from "../api-adapter";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { register } from '../api-adapter';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function Register(props) {
   const setToken = props.setToken;
@@ -15,24 +15,22 @@ function Register(props) {
     confirmPassword: '',
     name: '',
     location: '',
-  }
+  };
 
   const [user, setUser] = useState(defaultUser);
 
   function onChange(evt, key) {
     const userCopy = {
       ...user,
-      [key]: evt.target.value,  
-    }
+      [key]: evt.target.value,
+    };
 
-    setUser(userCopy)
+    setUser(userCopy);
   }
 
   const handleSubmit = async (evt) => {
-    console.log('handleSubmit')
     evt.preventDefault();
     const newToken = await register(user);
-    console.log("register submit token", newToken);
 
     setUser(defaultUser);
 
@@ -42,8 +40,8 @@ function Register(props) {
   };
 
   useEffect(() => {
-    if (token !== "") {
-      navigate("/");
+    if (token !== '') {
+      navigate('/');
     }
   }, [token]);
 
@@ -55,7 +53,9 @@ function Register(props) {
             type="text"
             value={user.username}
             name="username"
-            onChange={(evt) => {onChange(evt, 'username')}}
+            onChange={(evt) => {
+              onChange(evt, 'username');
+            }}
             variant="outlined"
             label="Username"
           />
@@ -67,7 +67,9 @@ function Register(props) {
             name="password"
             variant="outlined"
             label="Password"
-            onChange={(evt) => {onChange(evt, 'password')}}
+            onChange={(evt) => {
+              onChange(evt, 'password');
+            }}
           />
         </label>
         <label>
@@ -77,7 +79,9 @@ function Register(props) {
             name="confirmPassword"
             variant="outlined"
             label="Confirm Password"
-            onChange={(evt) => {onChange(evt, 'confirmPassword')}}
+            onChange={(evt) => {
+              onChange(evt, 'confirmPassword');
+            }}
           />
         </label>
         <label>
@@ -87,7 +91,9 @@ function Register(props) {
             name="name"
             variant="outlined"
             label="Name"
-            onChange={(evt) => {onChange(evt, 'name')}}
+            onChange={(evt) => {
+              onChange(evt, 'name');
+            }}
           />
         </label>
         <label>
@@ -97,20 +103,20 @@ function Register(props) {
             name="location"
             variant="outlined"
             label="Location"
-            onChange={(evt) => {onChange(evt, 'location')}}
+            onChange={(evt) => {
+              onChange(evt, 'location');
+            }}
           />
         </label>
-        {user.password === user.confirmPassword
-          && user.password !== ''
-          && user.username !== ''
-          && user.name !== ''
-          && user.location !== ''
-
-          ? <Button variant="outlined" className="register-button" type="submit">
+        {user.password === user.confirmPassword &&
+        user.password !== '' &&
+        user.username !== '' &&
+        user.name !== '' &&
+        user.location !== '' ? (
+          <Button variant="outlined" className="register-button" type="submit">
             Register
           </Button>
-          : null
-        }
+        ) : null}
       </form>
     </div>
   );

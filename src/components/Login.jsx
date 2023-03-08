@@ -28,7 +28,6 @@ function Login(props) {
     const username = username;
 
     const newToken = await login(username, password, setLoginUsername);
-    console.log('login submit token', newToken);
 
     if (newToken !== null) {
       setToken(newToken);

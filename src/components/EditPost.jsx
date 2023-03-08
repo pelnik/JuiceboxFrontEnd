@@ -21,8 +21,6 @@ function EditPost(props) {
     return singlePost.id === id;
   });
 
-  console.log('post', post);
-
   const titleOnChange = (evt) => {
     setTitle(evt.target.value);
   };
@@ -42,10 +40,8 @@ function EditPost(props) {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const editedPost = await patchPost(token, id, title, content);
-    console.log('edit post submit', editedPost);
 
     if (editedPost) {
-      console.log('index', post.idx);
       const updatedPosts = [...posts];
       updatedPosts[post.idx] = editedPost;
       setPosts(updatedPosts);
