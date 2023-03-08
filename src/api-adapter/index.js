@@ -86,3 +86,47 @@ export async function register(user) {
     console.error(error);
   }
 }
+
+export async function newPost(userToken, title, content, tags) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${userToken}`,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+      }),
+    });
+    const fullResponse = await response.json();
+    console.log("newPost response", fullResponse);
+
+    return fullResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function patchPost(userToken, postId, title, content, tags) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${userToken}`,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+      }),
+    });
+    const fullResponse = await response.json();
+    console.log("pathPost response", fullResponse);
+
+    return fullResponse;
+  } catch (error) {
+    console.error(error);
+  }
+}

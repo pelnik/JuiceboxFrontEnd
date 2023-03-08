@@ -25,7 +25,7 @@ const Posts = (props) => {
   return (
     <div className="postPage" id="postPage">
       <div className="post-list" id="post-list">
-        {posts.map((post, idx) => {
+        {[...posts].reverse().map((post, idx) => {
           return (
             <IndividualPost post={post} key={`IndividualPost${idx}`} />
           )
