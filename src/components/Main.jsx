@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import { Navbar, Register, PostForm } from ".";
-import Login from "./Login";
-import { getToken } from "../utils/localStorage.js";
-import Posts from "./Posts";
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Navbar, Register, PostForm, EditPost } from '.';
+import { getPosts } from '../api-adapter';
+import Login from './Login';
+import { getToken } from '../utils/localStorage.js';
+import Posts from './Posts';
 
 function Main() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
   const [posts, setPosts] = useState([]);
+
+  async function fetchPosts(token) {
+    const allPosts = await getPosts(token);
+
+    if (
+      allPosts !== undefined &&
+      ((token === '' && posts.length === 0) || token !== '')
+    ) {
+      setPosts(allPosts);
+    }
+  }
+
+  useEffect(() => {
+    fetchPosts(token);
+  }, [token]);
 
   useEffect(() => {
     const localToken = getToken();
@@ -16,7 +32,7 @@ function Main() {
 
   return (
     <div className="mainContainer" id="mainContainer">
-      <Navbar  setToken={setToken} token={token} />
+      <Navbar setToken={setToken} token={token} />
       <Routes>
         <Route
           path="/login"
@@ -30,7 +46,14 @@ function Main() {
           path="/post"
           element={<PostForm token={token} posts={posts} setPosts={setPosts} />}
         />
-        <Route path="*" element={<Posts posts={posts} setPosts={setPosts} token={token} />} />
+        <Route
+          path="/post/:id"
+          element={<EditPost token={token} posts={posts} setPosts={setPosts} />}
+        />
+        <Route
+          path="*"
+          element={<Posts posts={posts} setPosts={setPosts} token={token} />}
+        />
       </Routes>
     </div>
   );

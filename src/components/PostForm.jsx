@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import { newPost } from '../api-adapter';
@@ -12,8 +12,8 @@ function PostForm(props) {
 
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   const titleOnChange = (evt) => {
     setTitle(evt.target.value);
@@ -30,19 +30,18 @@ function PostForm(props) {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const createdPost = await newPost(token, title, content);
-    console.log("newPost submit", createdPost);
+    console.log('newPost submit', createdPost);
 
-    if ('id' in createdPost) {
+    if (createdPost) {
       const updatedPosts = [...posts];
       updatedPosts.push(createdPost);
       setPosts(updatedPosts);
 
+      setTitle('');
+      setContent('');
+
       navigate('/');
-
-      setTitle("");
-      setContent("");
     }
-
   };
 
   return (
@@ -62,7 +61,7 @@ function PostForm(props) {
           <TextField
             id="outlined-multiline-static"
             label="Content"
-            placeholder='Type here'
+            placeholder="Type here"
             value={content}
             onChange={contentOnChange}
             multiline
@@ -70,14 +69,19 @@ function PostForm(props) {
             // defaultValue="Default Value"
           />
         </label>
-        {token
-          ? <Button variant="outlined" className="post-button" type="submit">
+        {token ? (
+          <Button variant="outlined" className="post-button" type="submit">
             Post
           </Button>
-          : <Button onClick={onClickLogIn} variant="outlined" className="post-button">
+        ) : (
+          <Button
+            onClick={onClickLogIn}
+            variant="outlined"
+            className="post-button"
+          >
             Please Log In
           </Button>
-        }
+        )}
       </form>
     </div>
   );

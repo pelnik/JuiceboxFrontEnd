@@ -1,6 +1,6 @@
-import { saveToLocalStorage } from "../utils/localStorage";
+import { saveToLocalStorage } from '../utils/localStorage';
 
-const BASE_URL = "https://juicebox-mld2.onrender.com/api";
+const BASE_URL = 'https://juicebox-mld2.onrender.com/api';
 // const BASE_URL = "https://pelnik.dev/api/juicebox";
 
 export async function login(username, password) {
@@ -8,9 +8,9 @@ export async function login(username, password) {
     let token = null;
 
     const response = await fetch(`${BASE_URL}/users/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username,
@@ -18,9 +18,9 @@ export async function login(username, password) {
       }),
     });
     const fullResponse = await response.json();
-    console.log("login response", fullResponse);
+    console.log('login response', fullResponse);
 
-    if ("token" in fullResponse) {
+    if ('token' in fullResponse) {
       token = fullResponse.token;
       saveToLocalStorage(token);
     }
@@ -33,21 +33,21 @@ export async function login(username, password) {
 
 export async function getPosts(token) {
   const headerObject = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
 
-  if (token !== "") {
+  if (token !== '') {
     headerObject.Authorization = `Bearer ${token}`;
   }
 
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
-      method: "GET",
+      method: 'GET',
       headers: headerObject,
     });
 
     const fullResponse = await response.json();
-    console.log("getPosts response", fullResponse);
+    console.log('getPosts response', fullResponse);
 
     const posts = fullResponse.posts;
 
@@ -62,9 +62,9 @@ export async function register(user) {
     let token = null;
 
     const response = await fetch(`${BASE_URL}/users/register`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         username: user.username,
@@ -74,9 +74,9 @@ export async function register(user) {
       }),
     });
     const fullResponse = await response.json();
-    console.log("register response", fullResponse);
+    console.log('register response', fullResponse);
 
-    if ("token" in fullResponse) {
+    if ('token' in fullResponse) {
       token = fullResponse.token;
       saveToLocalStorage(token);
     }
@@ -90,9 +90,9 @@ export async function register(user) {
 export async function newPost(userToken, title, content, tags = '') {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
@@ -101,7 +101,7 @@ export async function newPost(userToken, title, content, tags = '') {
       }),
     });
     const fullResponse = await response.json();
-    console.log("newPost response", fullResponse);
+    console.log('newPost response', fullResponse);
 
     return fullResponse.post;
   } catch (error) {
@@ -112,9 +112,9 @@ export async function newPost(userToken, title, content, tags = '') {
 export async function patchPost(userToken, postId, title, content, tags) {
   try {
     const response = await fetch(`${BASE_URL}/posts/${postId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
@@ -123,9 +123,9 @@ export async function patchPost(userToken, postId, title, content, tags) {
       }),
     });
     const fullResponse = await response.json();
-    console.log("pathPost response", fullResponse);
+    console.log('pathPost response', fullResponse);
 
-    return fullResponse;
+    return fullResponse.post;
   } catch (error) {
     console.error(error);
   }
@@ -134,14 +134,14 @@ export async function patchPost(userToken, postId, title, content, tags) {
 export async function deletePost(userToken, postId) {
   try {
     const response = await fetch(`${BASE_URL}/posts/${postId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userToken}`,
       },
     });
     const fullResponse = await response.json();
-    console.log("deletePost response", fullResponse);
+    console.log('deletePost response', fullResponse);
 
     return fullResponse.post;
   } catch (error) {
