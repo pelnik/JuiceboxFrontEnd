@@ -4,8 +4,15 @@ import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
 import Tooltip from "@mui/joy/Tooltip";
 
+import { deletePost } from "../api-adapter";
+
 function IndividualPost(props) {
   const post = props.post;
+  const token = props.token;
+
+  async function deleteOnClick(evt) {
+    const deletedPost = await deletePost(token, post.id);
+  }
 
   return (
     <div className="individualPost">
@@ -18,13 +25,13 @@ function IndividualPost(props) {
       </div>
       <div className="postButtonContainer">
         <Tooltip title="Does not add if it already exists.">
-          <Button describeChild className="edit-button">
+          <Button className="edit-button">
             Edit
           </Button>
         </Tooltip>
         <Tooltip title="Delete">
-          <IconButton size="small">
-            <DeleteIcon />
+          <IconButton onClick={deleteOnClick} size="small">
+            <DeleteIcon  />
           </IconButton>
         </Tooltip>
       </div>

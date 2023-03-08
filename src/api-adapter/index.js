@@ -133,7 +133,7 @@ export async function patchPost(userToken, postId, title, content, tags) {
 
 export async function deletePost(userToken, postId) {
   try {
-    const response = await fetch(`${BASE_URL}/post/${postId}`, {
+    const response = await fetch(`${BASE_URL}/posts/${postId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -37,7 +37,7 @@ const Posts = (props) => {
         </Chip>
         {[...posts].reverse().map((post, idx) => {
           return (
-            <IndividualPost post={post} key={`IndividualPost${idx}`} />
+            <IndividualPost post={post} token={token} key={`IndividualPost${idx}`} />
           )
         })}
       </div>
