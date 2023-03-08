@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "../api-adapter";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../api-adapter';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function Login(props) {
   const setToken = props.setToken;
   const token = props.token;
+  const setLoginUsername = props.setLoginUsername;
+
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const usernameOnChange = (evt) => {
     setUsername(evt.target.value);
@@ -22,20 +24,24 @@ function Login(props) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const newToken = await login(username, password);
-    console.log("login submit token", newToken);
+    // "Lock in" username
+    const username = username;
 
-    setUsername("");
-    setPassword("");
+    const newToken = await login(username, password, setLoginUsername);
+    console.log('login submit token', newToken);
 
     if (newToken !== null) {
       setToken(newToken);
+      setLoginUsername(username);
+
+      setUsername('');
+      setPassword('');
     }
   };
 
   useEffect(() => {
-    if (token !== "") {
-      navigate("/");
+    if (token !== '') {
+      navigate('/');
     }
   }, [token]);
 

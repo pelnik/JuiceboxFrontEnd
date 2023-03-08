@@ -21,6 +21,8 @@ function EditPost(props) {
     return singlePost.id === id;
   });
 
+  console.log('post', post);
+
   const titleOnChange = (evt) => {
     setTitle(evt.target.value);
   };
@@ -56,9 +58,13 @@ function EditPost(props) {
   };
 
   useEffect(() => {
-    if (post) {
+    if (post && !post.isAuthor) {
+      navigate('/');
+    } else if (post) {
       setTitle(post.title);
       setContent(post.content);
+    } else if (posts.length > 0) {
+      navigate('/');
     }
   }, [posts]);
 

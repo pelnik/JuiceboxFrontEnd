@@ -41,18 +41,20 @@ function IndividualPost(props) {
           <strong>{post.author.name}</strong>
         </p>
       </div>
-      <div className="postButtonContainer">
-        <Tooltip title="Does not add if it already exists.">
-          <Button onClick={onClickEdit} className="edit-button">
-            Edit
-          </Button>
-        </Tooltip>
-        <Tooltip title="Delete">
-          <IconButton onClick={deleteOnClick} size="small">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      </div>
+      {post.isAuthor ? (
+        <div className="postButtonContainer">
+          <Tooltip title="Does not add if it already exists.">
+            <Button onClick={onClickEdit} className="edit-button">
+              Edit
+            </Button>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton onClick={deleteOnClick} size="small">
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+      ) : null}
     </div>
   );
 }
