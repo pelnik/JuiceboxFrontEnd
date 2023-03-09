@@ -43,12 +43,20 @@ function IndividualPost(props) {
       </div>
       {post.isAuthor ? (
         <div className="postButtonContainer">
-          <Button onClick={onClickEdit} className="edit-button post-button">
+          <Button
+            onClick={onClickEdit}
+            className="edit-button post-button"
+            sx={{ backgroundColor: '#9BC2BF' }}
+          >
             Edit
           </Button>
           <Tooltip title="Delete">
-            <IconButton className="post-button" onClick={deleteOnClick}>
-              <DeleteIcon size="medium" />
+            <IconButton
+              className="post-button"
+              onClick={deleteOnClick}
+              sx={{ backgroundColor: '#9BC2BF' }}
+            >
+              <DeleteIcon size="medium" sx={{ color: 'white' }} />
             </IconButton>
           </Tooltip>
         </div>

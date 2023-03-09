@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IndividualPost } from './';
-import Chip from '@mui/joy/Chip';
+import Chip from '@mui/material/Chip';
 
 import logo from '../Media/BevIcon.png';
 
@@ -26,11 +26,10 @@ const Posts = (props) => {
           </div>
           <Chip
             onClick={newPostOnClick}
-            slotProps={{ action: { href: '' } }}
             className="new-post-button"
-          >
-            New Post
-          </Chip>
+            sx={{ backgroundColor: '#9BC2BF', color: 'white' }}
+            label="New Post"
+          />
           <div className="post-list" id="post-list">
             {[...posts]
               .filter((post) => {
