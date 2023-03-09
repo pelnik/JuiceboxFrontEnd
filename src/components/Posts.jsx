@@ -18,7 +18,14 @@ const Posts = (props) => {
   return (
     <div className="postPage" id="postPage">
       <div className="post-list-parent">
-        <Chip onClick={newPostOnClick} slotProps={{ action: { href: '' } }}>
+        <h1 className="site-header">JuiceBox</h1>
+        <Chip
+          onClick={newPostOnClick}
+          slotProps={{ action: { href: '' } }}
+          sx={{
+            fontSize: '12',
+          }}
+        >
           New Post
         </Chip>
         <div className="post-list" id="post-list">

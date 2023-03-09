@@ -1,8 +1,40 @@
+:root {
+    --grayGreen: #9BC2BF;
+    --lightBlue: #73FFF3;
+    --beige: #FFE5C4;
+    --purple: #5D78C2;
+    --lightPurple: #D9E2FA;
+}
+
+/* Color Theme Swatches in Hex */
+.Juicebox-1-hex { color: #9BC2BF; }
+.Juicebox-2-hex { color: #73FFF3; }
+.Juicebox-3-hex { color: #FFE5C4; }
+.Juicebox-4-hex { color: #5D78C2; }
+.Juicebox-5-hex { color: #D9E2FA; }
+
+/* Color Theme Swatches in RGBA */
+.Juicebox-1-rgba { color: rgba(155, 194, 191, 1); }
+.Juicebox-2-rgba { color: rgba(115, 255, 243, 1); }
+.Juicebox-3-rgba { color: rgba(255, 229, 196, 1); }
+.Juicebox-4-rgba { color: rgba(93, 120, 194, 1); }
+.Juicebox-5-rgba { color: rgba(217, 226, 250, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Juicebox-1-hsla { color: hsla(175, 24, 68, 1); }
+.Juicebox-2-hsla { color: hsla(174, 100, 72, 1); }
+.Juicebox-3-hsla { color: hsla(33, 100, 88, 1); }
+.Juicebox-4-hsla { color: hsla(223, 45, 56, 1); }
+.Juicebox-5-hsla { color: hsla(223, 76, 91, 1); }
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    /* font-family: apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    ; */
+    font-family: 'roboto', apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     ;
 }
 
@@ -10,7 +42,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: black;
+    background-color: var(--grayGreen);
     color: white;
     height: 50px;
     align-items: center;
@@ -22,11 +54,16 @@
     display: flex;
     flex-direction: column;
 
-    background-color: bisque;
+    background-color: #ffe4c4;
 
 
     height: 100vh;
     width: 100vw;
+}
+
+.site-header {
+    color: var(--purple);
+    text-align: center;
 }
 
 
