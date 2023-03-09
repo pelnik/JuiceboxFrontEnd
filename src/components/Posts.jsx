@@ -22,9 +22,7 @@ const Posts = (props) => {
         <Chip
           onClick={newPostOnClick}
           slotProps={{ action: { href: '' } }}
-          sx={{
-            fontSize: '12',
-          }}
+          className="new-post-button"
         >
           New Post
         </Chip>

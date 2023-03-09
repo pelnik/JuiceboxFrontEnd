@@ -1,11 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "@mui/joy/Button";
-import IconButton from "@mui/joy/IconButton";
-import Tooltip from "@mui/joy/Tooltip";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/joy/Button';
+import IconButton from '@mui/joy/IconButton';
+import Tooltip from '@mui/joy/Tooltip';
 
-import { deletePost } from "../api-adapter";
+import { deletePost } from '../api-adapter';
 
 function IndividualPost(props) {
   const post = props.post;
@@ -18,7 +18,7 @@ function IndividualPost(props) {
   async function deleteOnClick(evt) {
     const deletedPost = await deletePost(token, post.id);
 
-    if ("id" in deletedPost) {
+    if ('id' in deletedPost) {
       let postsCopy = [...posts];
       postsCopy = postsCopy.filter((post) => {
         return post.id !== deletedPost.id;
@@ -38,7 +38,7 @@ function IndividualPost(props) {
         <h1>{post.title}</h1>
         <p className="content">{post.content}</p>
         <p className="author">
-          <strong>{post.author.name}</strong>
+          by: <strong>{post.author.name}</strong>
         </p>
       </div>
       {post.isAuthor ? (
