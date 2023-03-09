@@ -17,38 +17,43 @@ const Posts = (props) => {
   }
 
   return (
-    <div className="postPage" id="postPage">
-      <div className="post-list-parent">
-        <div className="jb-logo-container">
-          <img className="jb-logo" src={logo} alt="logo" />
-          <h1 className="site-header">JuiceBox</h1>
-        </div>
-        <Chip
-          onClick={newPostOnClick}
-          slotProps={{ action: { href: '' } }}
-          className="new-post-button"
-        >
-          New Post
-        </Chip>
-        <div className="post-list" id="post-list">
-          {[...posts]
-            .filter((post) => {
-              return post.active;
-            })
-            .reverse()
-            .map((post, idx) => {
-              return (
-                <IndividualPost
-                  post={post}
-                  posts={posts}
-                  setPosts={setPosts}
-                  token={token}
-                  key={`IndividualPost${idx}`}
-                />
-              );
-            })}
+    <div id="full-post-page">
+      <div className="postPage" id="postPage">
+        <div className="post-list-parent">
+          <div className="jb-logo-container">
+            <img className="jb-logo" src={logo} alt="logo" />
+            <h1 className="site-header">JuiceBox</h1>
+          </div>
+          <Chip
+            onClick={newPostOnClick}
+            slotProps={{ action: { href: '' } }}
+            className="new-post-button"
+          >
+            New Post
+          </Chip>
+          <div className="post-list" id="post-list">
+            {[...posts]
+              .filter((post) => {
+                return post.active;
+              })
+              .reverse()
+              .map((post, idx) => {
+                return (
+                  <IndividualPost
+                    post={post}
+                    posts={posts}
+                    setPosts={setPosts}
+                    token={token}
+                    key={`IndividualPost${idx}`}
+                  />
+                );
+              })}
+          </div>
         </div>
       </div>
+      <p className="attr">
+        Icon provided by https://creativemarket.com/eucalyp
+      </p>
     </div>
   );
 };

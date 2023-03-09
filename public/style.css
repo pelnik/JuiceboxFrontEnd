@@ -61,6 +61,19 @@
 
 }
 
+#full-post-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.attr {
+    text-align: center;
+    color: var(--purple);
+    font-size: 0.5rem;
+}
+
 .jb-logo-container {
     display: flex;
     flex-direction: row;
@@ -204,4 +217,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.post-button {
+    height: 0.25rem;
 }
