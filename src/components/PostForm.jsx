@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -45,43 +45,49 @@ function PostForm(props) {
 
   return (
     <div className="formContainer" id="post">
-      <form className="form" onSubmit={handleSubmit}>
-        <label>
-          <TextField
-            type="text"
-            value={title}
-            name="title"
-            onChange={titleOnChange}
-            variant="outlined"
-            label="Title"
-          />
-        </label>
-        <label>
-          <TextField
-            id="outlined-multiline-static"
-            label="Content"
-            placeholder="Type here"
-            value={content}
-            onChange={contentOnChange}
-            multiline
-            rows={4}
-            // defaultValue="Default Value"
-          />
-        </label>
-        {token ? (
-          <Button variant="outlined" className="post-button" type="submit">
-            Post
-          </Button>
-        ) : (
+      {!token ? (
+        <Button
+          onClick={onClickLogIn}
+          variant="outlined"
+          className="post-button log-in-error"
+        >
+          Please Log In
+        </Button>
+      ) : (
+        <form className="form" onSubmit={handleSubmit}>
+          <h1>Create New Post</h1>
+          <label>
+            <TextField
+              type="text"
+              value={title}
+              name="title"
+              onChange={titleOnChange}
+              variant="outlined"
+              label="Title"
+            />
+          </label>
+          <label>
+            <TextField
+              id="outlined-multiline-static"
+              label="Content"
+              placeholder="Type here"
+              value={content}
+              onChange={contentOnChange}
+              multiline
+              rows={4}
+              // defaultValue="Default Value"
+            />
+          </label>
           <Button
-            onClick={onClickLogIn}
             variant="outlined"
             className="post-button"
+            type="submit"
+            sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
           >
-            Please Log In
+            Post
           </Button>
-        )}
-      </form>
+        </form>
+      )}
     </div>
   );
 }

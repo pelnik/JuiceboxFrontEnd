@@ -44,6 +44,7 @@ function Login(props) {
   return (
     <div className="formContainer" id="login">
       <form className="form" onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <label>
           <TextField
             type="text"
@@ -52,6 +53,7 @@ function Login(props) {
             onChange={usernameOnChange}
             variant="outlined"
             label="Username"
+            style={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
           />
         </label>
         <label>
@@ -64,7 +66,12 @@ function Login(props) {
             onChange={passwordOnChange}
           />
         </label>
-        <Button variant="outlined" className="LoginButton" type="submit">
+        <Button
+          variant="outlined"
+          className="LoginButton"
+          type="submit"
+          sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
+        >
           Login
         </Button>
       </form>

@@ -92,7 +92,12 @@ function EditPost(props) {
             />
           </label>
           {token ? (
-            <Button variant="outlined" className="post-button" type="submit">
+            <Button
+              variant="outlined"
+              className="post-button"
+              type="submit"
+              sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
+            >
               Post
             </Button>
           ) : (
@@ -100,6 +105,7 @@ function EditPost(props) {
               onClick={onClickLogIn}
               variant="outlined"
               className="post-button"
+              sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
             >
               Please Log In
             </Button>

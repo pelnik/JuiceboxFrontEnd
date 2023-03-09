@@ -113,7 +113,12 @@ function Register(props) {
         user.username !== '' &&
         user.name !== '' &&
         user.location !== '' ? (
-          <Button variant="outlined" className="register-button" type="submit">
+          <Button
+            variant="outlined"
+            className="register-button"
+            type="submit"
+            sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
+          >
             Register
           </Button>
         ) : null}

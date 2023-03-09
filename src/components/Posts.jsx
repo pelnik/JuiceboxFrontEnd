@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IndividualPost } from './';
 import Chip from '@mui/material/Chip';
@@ -24,12 +24,14 @@ const Posts = (props) => {
             <img className="jb-logo" src={logo} alt="logo" />
             <h1 className="site-header">JuiceBox</h1>
           </div>
-          <Chip
-            onClick={newPostOnClick}
-            className="new-post-button"
-            sx={{ backgroundColor: '#9BC2BF', color: 'white' }}
-            label="New Post"
-          />
+          {token ? (
+            <Chip
+              onClick={newPostOnClick}
+              className="new-post-button"
+              sx={{ backgroundColor: '#9BC2BF', color: 'white' }}
+              label="New Post"
+            />
+          ) : null}
           <div className="post-list" id="post-list">
             {[...posts]
               .filter((post) => {
