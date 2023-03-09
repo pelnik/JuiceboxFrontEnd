@@ -70,6 +70,7 @@ function EditPost(props) {
         noPostComp()
       ) : (
         <form className="form" onSubmit={handleSubmit}>
+          <h1>Update Your Post</h1>
           <label>
             <TextField
               type="text"

@@ -13,14 +13,33 @@ function Login(props) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(false);
 
   const usernameOnChange = (evt) => {
     setUsername(evt.target.value);
+    setLoginError(false);
   };
 
   const passwordOnChange = (evt) => {
     setPassword(evt.target.value);
+    setLoginError(false);
   };
+
+  function setButtonColor() {
+    if (loginError) {
+      return {
+        color: '#FF0000',
+        text: 'Incorrect Login',
+      };
+    }
+
+    return {
+      color: '#9BC2BF',
+      text: 'Login',
+    };
+  }
+
+  const { color: buttonColor, text: buttonText } = setButtonColor();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -32,6 +51,8 @@ function Login(props) {
 
       setUsername('');
       setPassword('');
+    } else {
+      setLoginError(true);
     }
   };
 
@@ -48,6 +69,7 @@ function Login(props) {
         <label>
           <TextField
             type="text"
+            autoComplete="username"
             value={username}
             name="username"
             onChange={usernameOnChange}
@@ -58,7 +80,8 @@ function Login(props) {
         </label>
         <label>
           <TextField
-            type="text"
+            type="password"
+            autoComplete="current-password"
             value={password}
             name="password"
             variant="outlined"
@@ -70,9 +93,9 @@ function Login(props) {
           variant="outlined"
           className="LoginButton"
           type="submit"
-          sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
+          sx={{ color: buttonColor, borderColor: buttonColor }}
         >
-          Login
+          {buttonText}
         </Button>
       </form>
     </div>

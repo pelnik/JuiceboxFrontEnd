@@ -19,6 +19,31 @@ function Register(props) {
 
   const [user, setUser] = useState(defaultUser);
 
+  function setButtonColor() {
+    for (const key in user) {
+      if (user[key] === '') {
+        return {
+          color: '#FF0000',
+          text: 'Please enter all fields',
+        };
+      }
+    }
+
+    if (user.password !== user.confirmPassword) {
+      return {
+        color: '#FF0000',
+        text: "Password Confirmation doesn't match",
+      };
+    }
+
+    return {
+      color: '#9BC2BF',
+      text: 'Register',
+    };
+  }
+
+  const { color: buttonColor, text: buttonText } = setButtonColor();
+
   function onChange(evt, key) {
     const userCopy = {
       ...user,
@@ -53,6 +78,7 @@ function Register(props) {
             type="text"
             value={user.username}
             name="username"
+            autoComplete="username"
             onChange={(evt) => {
               onChange(evt, 'username');
             }}
@@ -62,7 +88,8 @@ function Register(props) {
         </label>
         <label>
           <TextField
-            type="text"
+            type="password"
+            autoComplete="new-password"
             value={user.password}
             name="password"
             variant="outlined"
@@ -74,7 +101,8 @@ function Register(props) {
         </label>
         <label>
           <TextField
-            type="text"
+            type="password"
+            autoComplete="confirm-password"
             value={user.confirmPassword}
             name="confirmPassword"
             variant="outlined"
@@ -108,20 +136,14 @@ function Register(props) {
             }}
           />
         </label>
-        {user.password === user.confirmPassword &&
-        user.password !== '' &&
-        user.username !== '' &&
-        user.name !== '' &&
-        user.location !== '' ? (
-          <Button
-            variant="outlined"
-            className="register-button"
-            type="submit"
-            sx={{ color: '#9BC2BF', borderColor: '#9BC2BF' }}
-          >
-            Register
-          </Button>
-        ) : null}
+        <Button
+          variant="outlined"
+          className="register-button"
+          type="submit"
+          sx={{ color: buttonColor, borderColor: buttonColor }}
+        >
+          {buttonText}
+        </Button>
       </form>
     </div>
   );
