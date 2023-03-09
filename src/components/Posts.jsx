@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Chip from '@mui/joy/Chip';
-import { getPosts, newPost } from '../api-adapter';
 import { IndividualPost } from './';
+import Chip from '@mui/joy/Chip';
+
+import logo from '../Media/BevIcon.png';
 
 const Posts = (props) => {
   const token = props.token;
@@ -18,7 +19,10 @@ const Posts = (props) => {
   return (
     <div className="postPage" id="postPage">
       <div className="post-list-parent">
-        <h1 className="site-header">JuiceBox</h1>
+        <div className="jb-logo-container">
+          <img className="jb-logo" src={logo} alt="logo" />
+          <h1 className="site-header">JuiceBox</h1>
+        </div>
         <Chip
           onClick={newPostOnClick}
           slotProps={{ action: { href: '' } }}
