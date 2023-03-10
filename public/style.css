@@ -157,6 +157,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    flex: 0 1 500px;
 }
 
 .post-list {
@@ -175,7 +177,6 @@
     flex-direction: column;
     justify-content: space-between;
     border: solid 1px var(--purple);
-    max-width: 1500px;
     gap: 20px;
     margin: 5px;
     padding: 10px;
