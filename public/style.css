@@ -1,4 +1,10 @@
-:root {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#jbMainContainer {
     --grayGreen: #9BC2BF;
     --lightBlue: #73FFF3;
     --beige: #FFE5C4;
@@ -6,29 +12,7 @@
     --lightPurple: #D9E2FA;
 }
 
-/* Color Theme Swatches in Hex */
-.Juicebox-1-hex { color: #9BC2BF; }
-.Juicebox-2-hex { color: #73FFF3; }
-.Juicebox-3-hex { color: #FFE5C4; }
-.Juicebox-4-hex { color: #5D78C2; }
-.Juicebox-5-hex { color: #D9E2FA; }
-
-/* Color Theme Swatches in RGBA */
-.Juicebox-1-rgba { color: rgba(155, 194, 191, 1); }
-.Juicebox-2-rgba { color: rgba(115, 255, 243, 1); }
-.Juicebox-3-rgba { color: rgba(255, 229, 196, 1); }
-.Juicebox-4-rgba { color: rgba(93, 120, 194, 1); }
-.Juicebox-5-rgba { color: rgba(217, 226, 250, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Juicebox-1-hsla { color: hsla(175, 24, 68, 1); }
-.Juicebox-2-hsla { color: hsla(174, 100, 72, 1); }
-.Juicebox-3-hsla { color: hsla(33, 100, 88, 1); }
-.Juicebox-4-hsla { color: hsla(223, 45, 56, 1); }
-.Juicebox-5-hsla { color: hsla(223, 76, 91, 1); }
-
-
-* {
+#jbMainContainer * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -38,7 +22,7 @@
     ;
 }
 
-#navbar {
+#jbMainContainer #navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,7 +33,7 @@
     padding-right: 10px;
 }
 
-#mainContainer {
+#jbMainContainer {
     display: flex;
     flex-direction: column;
 
@@ -61,7 +45,7 @@
 
 }
 
-#full-post-page {
+#jbMainContainer #full-post-page {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,13 +54,13 @@
 
 }
 
-.attr {
+#jbMainContainer .attr {
     text-align: center;
     color: var(--purple);
     font-size: 0.5rem;
 }
 
-.jb-logo-container {
+#jbMainContainer .jb-logo-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -84,11 +68,11 @@
     justify-content: center;
 }
 
-.jb-logo {
+#jbMainContainer .jb-logo {
     height: 3.5rem;
 }
 
-.site-header {
+#jbMainContainer .site-header {
     color: var(--purple);
     text-align: center;
     font-size: 3.5rem;
@@ -97,7 +81,7 @@
 
 
 
-.navBarLinks {
+#jbMainContainer .navBarLinks {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -105,12 +89,12 @@
     gap: 10px;
 }
 
-.navBarLinks svg {
+#jbMainContainer .navBarLinks svg {
     font-size: 3rem;
 }
 
 
-.formContainer {
+#jbMainContainer .formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,7 +102,7 @@
     flex-grow: 1;
 }
 
-.form {
+#jbMainContainer .form {
     margin-top: 8%;
     display: flex;
     flex-direction: column;
@@ -132,23 +116,23 @@
     color: var(--grayGreen)
 }
 
-.form h1 {
+#jbMainContainer .form h1 {
     text-align: center;
 }
 
-.form label {
+#jbMainContainer .form label {
     display: flex;
     flex-direction: column;
 }
 
 
 
-.mainContent {
+#jbMainContainer .mainContent {
     flex-grow: 1;
     background-color: aqua;
 }
 
-.postPage {
+#jbMainContainer .postPage {
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -157,7 +141,7 @@
     padding: 15px;
 }
 
-.post-list-parent {
+#jbMainContainer .post-list-parent {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -167,18 +151,18 @@
     flex: 0 1 500px;
 }
 
-.post-list {
+#jbMainContainer .post-list {
     min-height: 0;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
 }
 
-.post-list-parent .new-post-button {
+#jbMainContainer .post-list-parent .new-post-button {
     align-self: center;
 }
 
-.individualPost {
+#jbMainContainer .individualPost {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -191,12 +175,12 @@
 }
 
 
-.individualPost h1 {
+#jbMainContainer .individualPost h1 {
     font-size: medium;
     margin: 10px;
 }
 
-.post-content {
+#jbMainContainer .post-content {
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -204,24 +188,24 @@
 
 }
 
-.post-content h1 {
+#jbMainContainer .post-content h1 {
     font-size: 2rem;
 }
 
 
 
-.content {
+#jbMainContainer .content {
     font-size: 1.25rem;
     align-self: flex-start;
     text-align: left;
 }
 
-.author {
+#jbMainContainer .author {
     font-size: 1rem;
     align-self: flex-start;
 }
 
-.postButtonContainer {
+#jbMainContainer .postButtonContainer {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -229,6 +213,6 @@
     align-items: center;
 }
 
-button.log-in-error {
+#jbMainContainer button.log-in-error {
     margin-top: 20%;
 }

@@ -28,7 +28,7 @@ function Main() {
   }, []);
 
   return (
-    <div className="mainContainer" id="mainContainer">
+    <div className="jbMainContainer" id="jbMainContainer">
       <Navbar setToken={setToken} token={token} />
       <Routes>
         <Route
