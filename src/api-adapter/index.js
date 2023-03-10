@@ -81,7 +81,7 @@ export async function register(user) {
       saveToLocalStorage(token);
     }
 
-    return token;
+    return fullResponse;
   } catch (error) {
     console.error(error);
   }

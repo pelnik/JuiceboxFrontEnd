@@ -18,8 +18,17 @@ function Register(props) {
   };
 
   const [user, setUser] = useState(defaultUser);
+  const [userExistsError, setUserExistError] = useState(false);
 
   function setButtonColor() {
+    console.log('userExistsError', userExistsError);
+    if (userExistsError) {
+      return {
+        color: '#FF0000',
+        text: 'User already registered',
+      };
+    }
+
     for (const key in user) {
       if (user[key] === '') {
         return {
@@ -55,9 +64,19 @@ function Register(props) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const newToken = await register(user);
 
-    setUser(defaultUser);
+    let newToken = null;
+    const registerResponse = await register(user);
+
+    if ('token' in registerResponse) {
+      newToken = registerResponse.token;
+      setUser(defaultUser);
+    }
+
+    if (registerResponse.name === 'UserExistsError') {
+      console.log('error name', registerResponse.name);
+      setUserExistError(true);
+    }
 
     if (newToken !== null) {
       setToken(newToken);
@@ -69,6 +88,11 @@ function Register(props) {
       navigate('/');
     }
   }, [token]);
+
+  useEffect(() => {
+    console.log('rerunning user exists error, user:', user);
+    setUserExistError(false);
+  }, [user]);
 
   return (
     <div className="formContainer" id="login">
