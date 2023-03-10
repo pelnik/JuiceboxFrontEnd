@@ -66,6 +66,8 @@
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    min-height: 0;
+
 }
 
 .attr {
@@ -150,6 +152,8 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
+
+    min-height: 0;
     padding: 15px;
 }
 
@@ -157,6 +161,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    min-height: 0;
 
     flex: 0 1 500px;
 }
