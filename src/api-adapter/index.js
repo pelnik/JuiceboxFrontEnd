@@ -1,7 +1,6 @@
 import { saveToLocalStorage } from '../utils/localStorage';
 
-const BASE_URL = 'https://juicebox-mld2.onrender.com/api';
-// const BASE_URL = "https://pelnik.dev/api/juicebox";
+const BASE_URL = 'https://pelnik.dev/api/juicebox';
 
 export async function login(username, password) {
   try {
