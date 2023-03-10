@@ -28,7 +28,12 @@ const Posts = (props) => {
             <Chip
               onClick={newPostOnClick}
               className="new-post-button"
-              sx={{ backgroundColor: '#9BC2BF', color: 'white' }}
+              sx={{
+                backgroundColor: '#9BC2BF',
+                color: 'white',
+                fontSize: '1rem',
+                padding: '5px',
+              }}
               label="New Post"
             />
           ) : null}
