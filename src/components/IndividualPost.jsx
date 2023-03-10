@@ -46,7 +46,7 @@ function IndividualPost(props) {
           <Button
             onClick={onClickEdit}
             className="edit-button post-button"
-            sx={{ backgroundColor: '#9BC2BF' }}
+            sx={{ backgroundColor: '#5D78C2' }}
           >
             Edit
           </Button>
@@ -54,7 +54,7 @@ function IndividualPost(props) {
             <IconButton
               className="post-button"
               onClick={deleteOnClick}
-              sx={{ backgroundColor: '#9BC2BF' }}
+              sx={{ backgroundColor: '#5D78C2' }}
             >
               <DeleteIcon size="medium" sx={{ color: 'white' }} />
             </IconButton>
