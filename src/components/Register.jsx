@@ -73,6 +73,7 @@ function Register(props) {
   return (
     <div className="formContainer" id="login">
       <form className="form" onSubmit={handleSubmit}>
+        <h1>Register New User</h1>
         <label>
           <TextField
             type="text"
