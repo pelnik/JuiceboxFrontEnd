@@ -21,7 +21,6 @@ function Register(props) {
   const [userExistsError, setUserExistError] = useState(false);
 
   function setButtonColor() {
-    console.log('userExistsError', userExistsError);
     if (userExistsError) {
       return {
         color: '#FF0000',
@@ -74,7 +73,6 @@ function Register(props) {
     }
 
     if (registerResponse.name === 'UserExistsError') {
-      console.log('error name', registerResponse.name);
       setUserExistError(true);
     }
 
@@ -90,7 +88,6 @@ function Register(props) {
   }, [token]);
 
   useEffect(() => {
-    console.log('rerunning user exists error, user:', user);
     setUserExistError(false);
   }, [user]);
 

@@ -18,7 +18,6 @@ export async function login(username, password) {
       }),
     });
     const fullResponse = await response.json();
-    console.log('login response', fullResponse);
 
     if ('token' in fullResponse) {
       token = fullResponse.token;
@@ -47,7 +46,6 @@ export async function getPosts(token) {
     });
 
     const fullResponse = await response.json();
-    console.log('getPosts response', fullResponse);
 
     const posts = fullResponse.posts;
 
@@ -74,7 +72,6 @@ export async function register(user) {
       }),
     });
     const fullResponse = await response.json();
-    console.log('register response', fullResponse);
 
     if ('token' in fullResponse) {
       token = fullResponse.token;
@@ -101,7 +98,6 @@ export async function newPost(userToken, title, content, tags = '') {
       }),
     });
     const fullResponse = await response.json();
-    console.log('newPost response', fullResponse);
 
     return fullResponse.post;
   } catch (error) {
@@ -123,7 +119,6 @@ export async function patchPost(userToken, postId, title, content, tags) {
       }),
     });
     const fullResponse = await response.json();
-    console.log('pathPost response', fullResponse);
 
     return fullResponse.post;
   } catch (error) {
@@ -141,7 +136,6 @@ export async function deletePost(userToken, postId) {
       },
     });
     const fullResponse = await response.json();
-    console.log('deletePost response', fullResponse);
 
     return fullResponse.post;
   } catch (error) {
